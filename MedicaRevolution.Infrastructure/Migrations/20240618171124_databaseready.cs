@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace MedicaRevolution.Infrastructure.Migrations
 {
     /// <inheritdoc />
-    public partial class addIdentity : Migration
+    public partial class databaseready : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)

@@ -15,10 +15,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Controllers\" />
-  </ItemGroup>
-
-  <ItemGroup>
     <ProjectReference Include="..\MedicaRevolution.Application\MedicaRevolution.Application.csproj" />
     <ProjectReference Include="..\MedicaRevolution.Infrastructure\MedicaRevolution.Infrastructure.csproj" />
   </ItemGroup>

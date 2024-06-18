@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace MedicaRevolution.Infrastructure.Migrations
 {
     [DbContext(typeof(MedicaRevolutionDbContext))]
-    [Migration("20240618165536_addIdentity")]
-    partial class addIdentity
+    [Migration("20240618171124_databaseready")]
+    partial class databaseready
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
