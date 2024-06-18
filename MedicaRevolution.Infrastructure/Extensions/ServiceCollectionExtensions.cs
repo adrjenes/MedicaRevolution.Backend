@@ -1,4 +1,5 @@
-﻿using MedicaRevolution.Infrastructure.Persistence;
+﻿using MedicaRevolution.Domain.Entities;
+using MedicaRevolution.Infrastructure.Persistence;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -13,5 +14,7 @@ public static class ServiceCollectionExtensions
         services.AddDbContext<MedicaRevolutionDbContext>(options =>
             options.UseSqlServer(connectionString)
                 .EnableSensitiveDataLogging());
+        services.AddIdentityApiEndpoints<User>()
+            .AddEntityFrameworkStores<MedicaRevolutionDbContext>();
     }
 }
