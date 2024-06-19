@@ -1,6 +1,9 @@
 ﻿using MedicaRevolution.Domain.Entities;
+using MedicaRevolution.Domain.Repositories;
 using MedicaRevolution.Infrastructure.Persistence;
+using MedicaRevolution.Infrastructure.Repositories;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
@@ -18,6 +21,7 @@ public static class ServiceCollectionExtensions
         services.AddDbContext<MedicaRevolutionDbContext>(options =>
             options.UseSqlServer(connectionString)
                 .EnableSensitiveDataLogging());
+        services.AddScoped<IPatientRepository, PatientRepository>();
         // IDENTITY
         services.AddIdentity<User, IdentityRole>(options =>
         {
@@ -46,8 +50,8 @@ public static class ServiceCollectionExtensions
                 ValidateAudience = false,
                 ValidateLifetime = true,
                 ValidateIssuerSigningKey = true,
-                ValidIssuer = configuration["Jwt:Issuer"],
-                IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(configuration["Jwt:Key"]))
+                ValidIssuer = configuration["JWT:Issuer"],
+                IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(configuration["JWT:Key"]))
             };
         });
 
@@ -57,5 +61,6 @@ public static class ServiceCollectionExtensions
             options.AddPolicy("DoctorPolicy", policy => policy.RequireRole("Doctor"));
             options.AddPolicy("PatientPolicy", policy => policy.RequireRole("Patient"));
         });
+        services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
     }
 }

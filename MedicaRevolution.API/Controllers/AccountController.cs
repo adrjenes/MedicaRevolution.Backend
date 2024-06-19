@@ -1,4 +1,5 @@
 ﻿using MediatR;
+using MedicaRevolution.Application.Users.Patients.Commands.Register;
 using Microsoft.AspNetCore.Mvc;
 using RudyGrzebien.Application.Users.Commands.AddRole;
 using RudyGrzebien.Application.Users.Commands.AssignRole;
@@ -44,4 +45,5 @@ public class AccountController(IMediator mediator) : ControllerBase
 
         return BadRequest(result.Errors);
     }
+    
 }
