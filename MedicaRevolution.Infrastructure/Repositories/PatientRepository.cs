@@ -18,4 +18,10 @@ public class PatientRepository : IPatientRepository
         _dbContext.PatientForms.Add(form);
         await _dbContext.SaveChangesAsync();
     }
+    public async Task<List<PatientForm>> GetPatientFormsByUserIdAsync(string userId)
+    {
+        return await _dbContext.PatientForms
+            .Where(pf => pf.PatientId == userId)
+            .ToListAsync();
+    }
 }

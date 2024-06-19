@@ -26,7 +26,6 @@ public class RegisterPatientCommandHandler(UserManager<User> userManager, RoleMa
             {
                 return new RegisterPatientResult { Success = false, Errors = roleResult.Errors.Select(e => e.Description) };
             }
-
             return new RegisterPatientResult { Success = true };
         }
 

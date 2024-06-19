@@ -63,5 +63,7 @@ public static class ServiceCollectionExtensions
             options.AddPolicy("PatientPolicy", policy => policy.RequireRole("Patient"));
         });
         services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
+        services.AddTransient<TokenService>();
+
     }
 }
