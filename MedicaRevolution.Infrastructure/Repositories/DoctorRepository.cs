@@ -14,4 +14,8 @@ public class DoctorRepository : IDoctorRepository
         _dbContext = dbContext;
     }
 
+    public async Task<List<PatientForm>> GetAllPatientFormsAsync()
+    {
+        return await _dbContext.PatientForms.ToListAsync();
+    }
 }

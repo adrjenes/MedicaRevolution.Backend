@@ -22,6 +22,7 @@ public static class ServiceCollectionExtensions
             options.UseSqlServer(connectionString)
                 .EnableSensitiveDataLogging());
         services.AddScoped<IPatientRepository, PatientRepository>();
+        services.AddScoped<IDoctorRepository, DoctorRepository>();
         // IDENTITY
         services.AddIdentity<User, IdentityRole>(options =>
         {

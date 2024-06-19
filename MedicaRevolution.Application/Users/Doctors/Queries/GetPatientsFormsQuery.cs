@@ -1,5 +1,8 @@
-﻿namespace MedicaRevolution.Application.Users.Doctors.Queries;
+﻿using MediatR;
+using MedicaRevolution.Application.Users.Dtos;
 
-public class GetPatientsFormsQuery 
+namespace MedicaRevolution.Application.Users.Doctors.Queries;
+
+public class GetPatientFormsQuery : IRequest<List<PatientFormDto>>
 {
 }
