@@ -19,8 +19,4 @@
     <ProjectReference Include="..\MedicaRevolution.Application\MedicaRevolution.Application.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Authorization\" />
-  </ItemGroup>
-
 </Project>

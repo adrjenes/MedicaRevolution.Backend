@@ -4,18 +4,10 @@ using MedicaRevolution.Infrastructure.Persistence;
 using Microsoft.EntityFrameworkCore;
 
 namespace MedicaRevolution.Infrastructure.Repositories;
-
-public class DoctorRepository : IDoctorRepository
+internal class DoctorRepository(MedicaRevolutionDbContext dbContext) : IDoctorRepository
 {
-    private readonly MedicaRevolutionDbContext _dbContext;
-
-    public DoctorRepository(MedicaRevolutionDbContext dbContext)
-    {
-        _dbContext = dbContext;
-    }
-
     public async Task<List<PatientForm>> GetAllPatientFormsAsync()
     {
-        return await _dbContext.PatientForms.ToListAsync();
+        return await dbContext.PatientForms.ToListAsync();
     }
 }

@@ -1,14 +1,12 @@
 ﻿using MediatR;
-using MedicaRevolution.Application.Users.Doctors.Queries;
 using MedicaRevolution.Application.Users.Patients.Commands.Register;
 using MedicaRevolution.Application.Users.Patients.Commands.SendForm;
 using MedicaRevolution.Application.Users.Patients.Queries.GetMyForms;
-using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace MedicaRevolution.API.Controllers;
 [ApiController]
-[Route("api/[controller]")]
+[Route("api/patient")]
 public class PatientController(IMediator mediator) : ControllerBase
 {
     [HttpPost("register-patient")]

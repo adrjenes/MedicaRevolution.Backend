@@ -1,6 +1,5 @@
 ﻿using MediatR;
 using Microsoft.AspNetCore.Identity;
-using RudyGrzebien.Application.Users.Commands;
 using RudyGrzebien.Application.Users.Commands.AddRole;
 
 namespace RudyGrzebien.Application.Users.Handlers;

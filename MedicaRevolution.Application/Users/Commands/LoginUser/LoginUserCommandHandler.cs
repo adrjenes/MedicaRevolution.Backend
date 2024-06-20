@@ -1,8 +1,8 @@
 ﻿using MediatR;
 using MedicaRevolution.Domain.Entities;
 using Microsoft.AspNetCore.Identity;
-using RudyGrzebien.Application.Users.Commands.LoginUser;
 
+namespace RudyGrzebien.Application.Users.Commands.LoginUser;
 public class LoginUserCommandHandler(UserManager<User> userManager, TokenService tokenService) : IRequestHandler<LoginUserCommand, LoginUserResult>
 {
     public async Task<LoginUserResult> Handle(LoginUserCommand request, CancellationToken cancellationToken)

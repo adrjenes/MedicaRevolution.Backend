@@ -1,8 +1,6 @@
 using MedicaRevolution.Application.Extensions;
 using MedicaRevolution.Infrastructure.Extensions;
-using Microsoft.Extensions.DependencyInjection;
 using Serilog;
-using Serilog.Events;
 
 var builder = WebApplication.CreateBuilder(args);
 

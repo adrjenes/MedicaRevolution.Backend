@@ -4,23 +4,16 @@ using MedicaRevolution.Infrastructure.Persistence;
 using Microsoft.EntityFrameworkCore;
 
 namespace MedicaRevolution.Infrastructure.Repositories;
-public class PatientRepository : IPatientRepository
+internal class PatientRepository(MedicaRevolutionDbContext dbContext) : IPatientRepository
 {
-    private readonly MedicaRevolutionDbContext _dbContext;
-
-    public PatientRepository(MedicaRevolutionDbContext dbContext)
-    {
-        _dbContext = dbContext;
-    }
-
     public async Task SaveFormAsync(PatientForm form)
     {
-        _dbContext.PatientForms.Add(form);
-        await _dbContext.SaveChangesAsync();
+        dbContext.PatientForms.Add(form);
+        await dbContext.SaveChangesAsync();
     }
     public async Task<List<PatientForm>> GetPatientFormsByUserIdAsync(string userId)
     {
-        return await _dbContext.PatientForms
+        return await dbContext.PatientForms
             .Where(pf => pf.PatientId == userId)
             .ToListAsync();
     }
