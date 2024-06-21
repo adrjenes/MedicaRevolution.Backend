@@ -10,7 +10,7 @@ public class LoginUserCommandHandler(UserManager<User> userManager, TokenService
         var user = await userManager.FindByEmailAsync(request.Email);
         if (user != null && await userManager.CheckPasswordAsync(user, request.Password))
         {
-            var token = tokenService.GenerateToken(user);
+            var token = await tokenService.GenerateToken(user);
             return new LoginUserResult
             {
                 Success = true,

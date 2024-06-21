@@ -14,11 +14,7 @@ public class GetMyFormsQueryHandler(IPatientRepository patientFormRepository, IM
     {
         var userId = httpContextAccessor.HttpContext.User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
 
-        if (string.IsNullOrEmpty(userId))
-        {
-            throw new ArgumentNullException("Nie dziala");
-        }
-
+        if (string.IsNullOrEmpty(userId)) throw new ArgumentNullException("Brak userId");
         var patientForms = await patientFormRepository.GetPatientFormsByUserIdAsync(userId);
         return mapper.Map<List<PatientFormDto>>(patientForms);
     }

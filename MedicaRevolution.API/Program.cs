@@ -1,3 +1,4 @@
+using MedicaRevolution.API.Extensions;
 using MedicaRevolution.Application.Extensions;
 using MedicaRevolution.Infrastructure.Extensions;
 using Serilog;
@@ -5,6 +6,7 @@ using Serilog;
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
+builder.AddPresentation();
 builder.Services.AddControllers();
 builder.Services.AddApplication();
 builder.Services.AddInfrastructure(builder.Configuration);
@@ -26,6 +28,7 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
+app.UseCors("AllowAll");
 app.UseSerilogRequestLogging();
 app.UseHttpsRedirection();
 app.UseAuthentication();

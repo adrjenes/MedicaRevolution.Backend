@@ -62,6 +62,15 @@ public static class ServiceCollectionExtensions
             options.AddPolicy("DoctorPolicy", policy => policy.RequireRole("Doctor"));
             options.AddPolicy("PatientPolicy", policy => policy.RequireRole("Patient"));
         });
+        services.AddCors(options =>
+        {
+            options.AddPolicy("AllowAll", builder =>
+            {
+                builder.AllowAnyOrigin()
+                       .AllowAnyMethod()
+                       .AllowAnyHeader();
+            });
+        });
         services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
         services.AddTransient<TokenService>();
 

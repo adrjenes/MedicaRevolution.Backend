@@ -13,7 +13,7 @@ public class SendFormCommandHandler(UserManager<User> userManager, IPatientRepos
 {
     public async Task<SendFormResult> Handle(SendFormCommand request, CancellationToken cancellationToken)
     {
-        var email = httpContextAccessor.HttpContext.User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+        var email = httpContextAccessor.HttpContext.User.FindFirst(ClaimTypes.Email)?.Value;
         var patient = await userManager.FindByEmailAsync(email);
         var patientForm = mapper.Map<PatientForm>(patient);
         patientForm.Description = request.Description;

@@ -13,7 +13,7 @@ public class PatientController(IMediator mediator) : ControllerBase
     public async Task<IActionResult> RegisterPatient([FromBody] RegisterPatientCommand command)
     {
         var result = await mediator.Send(command);
-        if (result.Success) return Ok(new { message = "Patient registered successfully" });
+        if (result.Success) return Ok(new { token = result.Token }); 
         return BadRequest(result.Errors);
     }
     [HttpPost("send-form")]
