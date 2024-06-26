@@ -23,6 +23,7 @@ public class PatientController(IMediator mediator) : ControllerBase
         if (result.Success) return Ok(new { message = "Form sent successfully" });
         return BadRequest(new { message = result.ErrorMessage });
     }
+
     [HttpGet("my-forms")]
     public async Task<IActionResult> GetMyPatientForms()
     {

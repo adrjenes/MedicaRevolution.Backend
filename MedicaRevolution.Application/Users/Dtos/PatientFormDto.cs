@@ -12,6 +12,6 @@ public class PatientFormDto
     public DateTime CreatedAt { get; set; }
     public string Diagnosis { get; set; }
     public string DoctorConclusions { get; set; }
-    public string PdfFileName { get; set; }
+    public string? PdfFileName { get; set; } = string.Empty;
     public DateTime? ResponseDateDoctor { get; set; }
 }

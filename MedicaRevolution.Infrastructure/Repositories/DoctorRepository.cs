@@ -10,4 +10,11 @@ internal class DoctorRepository(MedicaRevolutionDbContext dbContext) : IDoctorRe
     {
         return await dbContext.PatientForms.ToListAsync();
     }
+    public async Task<PatientForm?> GetByIdAsync(int id)
+    {
+        var restaurant = await dbContext.PatientForms
+            .FirstOrDefaultAsync(x => x.Id == id);
+        return restaurant;
+    }
+    public Task SaveChanges() => dbContext.SaveChangesAsync();
 }

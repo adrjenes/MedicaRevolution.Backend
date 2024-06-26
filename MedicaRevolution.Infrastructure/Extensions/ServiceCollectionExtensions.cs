@@ -1,7 +1,11 @@
 ﻿using MedicaRevolution.Domain.Entities;
+using MedicaRevolution.Domain.Interfaces;
 using MedicaRevolution.Domain.Repositories;
+using MedicaRevolution.Infrastructure.Configuration;
 using MedicaRevolution.Infrastructure.Persistence;
 using MedicaRevolution.Infrastructure.Repositories;
+using MedicaRevolution.Infrastructure.Seeders;
+using MedicaRevolution.Infrastructure.Storage;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
@@ -71,8 +75,10 @@ public static class ServiceCollectionExtensions
                        .AllowAnyHeader();
             });
         });
+        services.AddScoped<IMedicaRevolutionSeeder, MedicaRevolutionSeeder>();
         services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
         services.AddTransient<TokenService>();
-
+        services.Configure<BlobStorageSettings>(configuration.GetSection("BlobStorage"));
+        services.AddScoped<IBlobStorageService, BlobStorageService>();
     }
 }
