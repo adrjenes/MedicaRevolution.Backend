@@ -1,8 +1,7 @@
 ﻿namespace MedicaRevolution.Application.Users.Dtos;
 
-public class PatientFormDto
+public class PatientDto
 {
-    public int Id { get; set; }
     public string Description { get; set; }
     public string FirstName { get; set; }
     public string LastName { get; set; }
@@ -13,6 +12,6 @@ public class PatientFormDto
     public string Diagnosis { get; set; }
     public string DoctorConclusions { get; set; }
     public string? PdfFileName { get; set; } = string.Empty;
-    public bool? isArchive { get; set; } 
+    public bool isArchive { get; set; } = false;
     public DateTime? ResponseDateDoctor { get; set; }
 }

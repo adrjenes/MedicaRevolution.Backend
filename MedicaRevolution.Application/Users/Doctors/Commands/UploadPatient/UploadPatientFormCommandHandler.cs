@@ -5,7 +5,7 @@ using MedicaRevolution.Domain.Interfaces;
 using MedicaRevolution.Domain.Repositories;
 using Microsoft.Extensions.Logging;
 
-namespace MedicaRevolution.Application.Users.Doctors.Commands;
+namespace MedicaRevolution.Application.Users.Doctors.Commands.UploadPatient;
 
 internal class UploadPatientFormCommandHandler(ILogger<UploadPatientFormCommandHandler> logger,
     IDoctorRepository doctorRepository, IBlobStorageService blobStorageService) : IRequestHandler<UploadPatientFormCommand>

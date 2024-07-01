@@ -1,7 +1,9 @@
 ﻿using MediatR;
+using MedicaRevolution.Application.Users.Doctors.Queries.GetPatientForm;
 using MedicaRevolution.Application.Users.Patients.Commands.Register;
 using MedicaRevolution.Application.Users.Patients.Commands.SendForm;
 using MedicaRevolution.Application.Users.Patients.Queries.GetMyForms;
+using MedicaRevolution.Application.Users.Patients.Queries.GetMyOneForm;
 using Microsoft.AspNetCore.Mvc;
 
 namespace MedicaRevolution.API.Controllers;
@@ -29,6 +31,12 @@ public class PatientController(IMediator mediator) : ControllerBase
     {
         var query = new GetMyFormsQuery();
         var result = await mediator.Send(query);
+        return Ok(result);
+    }
+    [HttpGet("my-forms/{id}")]
+    public async Task<IActionResult> GetMyOnePatientForm([FromRoute] int id)
+    {
+        var result = await mediator.Send(new GetMyOneFormQuery(id));
         return Ok(result);
     }
 }

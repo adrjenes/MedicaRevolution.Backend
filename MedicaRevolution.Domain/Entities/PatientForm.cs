@@ -14,6 +14,7 @@ public class PatientForm
     public string Diagnosis { get; set; } = string.Empty;
     public string DoctorConclusions { get; set; } = string.Empty;
     public string PdfFileName { get; set; } = string.Empty;
+    public bool? isArchive { get; set; } 
     public DateTime? ResponseDateDoctor { get; set; }
     public User Patient { get; set; }
 }

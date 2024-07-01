@@ -5,4 +5,5 @@ public interface IPatientRepository
 {
     Task SaveFormAsync(PatientForm form);
     Task<List<PatientForm>> GetPatientFormsByUserIdAsync(string userId);
+    Task<PatientForm?> GetByIdAsync(int id);
 }

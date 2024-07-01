@@ -17,4 +17,10 @@ internal class PatientRepository(MedicaRevolutionDbContext dbContext) : IPatient
             .Where(pf => pf.PatientId == userId)
             .ToListAsync();
     }
+    public async Task<PatientForm?> GetByIdAsync(int id)
+    {
+        var patient = await dbContext.PatientForms
+            .FirstOrDefaultAsync(x => x.Id == id);
+        return patient;
+    }
 }

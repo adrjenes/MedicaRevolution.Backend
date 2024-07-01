@@ -16,5 +16,6 @@ public class PatientProfile : Profile
                 .ForMember(dest => dest.ResponseDateDoctor, opt => opt.Ignore());
 
         CreateMap<PatientForm, PatientFormDto>();
+        CreateMap<PatientForm, PatientDto>();
     }
 }
