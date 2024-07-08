@@ -38,15 +38,12 @@ public static class ServiceCollectionExtensions
         })
         .AddEntityFrameworkStores<MedicaRevolutionDbContext>()
         .AddDefaultTokenProviders();
-
-        // AUTHENTICATION
         services.AddAuthentication(options =>
         {
             options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
             options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
             options.DefaultScheme = JwtBearerDefaults.AuthenticationScheme;
         })
-        // BEARER
         .AddJwtBearer(options =>
         {
             options.TokenValidationParameters = new TokenValidationParameters
@@ -59,8 +56,6 @@ public static class ServiceCollectionExtensions
                 IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(configuration["JWT:Key"]))
             };
         });
-
-        // AUTHORIZATION
         services.AddAuthorization(options =>
         {
             options.AddPolicy("DoctorPolicy", policy => policy.RequireRole("Doctor"));

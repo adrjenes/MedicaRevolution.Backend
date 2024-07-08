@@ -11,5 +11,7 @@ public class UpdatePatientFormCommand : IRequest
     public string? DoctorConclusions { get; set; }
     public bool isArchive { get; set; }
     public IFormFile? File { get; set; }
+    public DateTime? startDate { get; set; }
+    public DateTime? endDate { get; set; }
     public DateTime? ResponseDateDoctor { get; set; }
 }

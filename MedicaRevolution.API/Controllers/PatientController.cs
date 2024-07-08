@@ -1,17 +1,19 @@
 ﻿using MediatR;
-using MedicaRevolution.Application.Users.Doctors.Queries.GetPatientForm;
 using MedicaRevolution.Application.Users.Patients.Commands.Register;
 using MedicaRevolution.Application.Users.Patients.Commands.SendForm;
 using MedicaRevolution.Application.Users.Patients.Queries.GetMyForms;
 using MedicaRevolution.Application.Users.Patients.Queries.GetMyOneForm;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace MedicaRevolution.API.Controllers;
 [ApiController]
 [Route("api/patient")]
+[Authorize(Roles = "Patient")]
 public class PatientController(IMediator mediator) : ControllerBase
 {
     [HttpPost("register-patient")]
+    [AllowAnonymous]
     public async Task<IActionResult> RegisterPatient([FromBody] RegisterPatientCommand command)
     {
         var result = await mediator.Send(command);

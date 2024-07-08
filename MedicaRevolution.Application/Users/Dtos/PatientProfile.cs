@@ -2,7 +2,6 @@
 using MedicaRevolution.Domain.Entities;
 
 namespace MedicaRevolution.Application.Users.Dtos;
-
 public class PatientProfile : Profile
 {
     public PatientProfile()
@@ -14,7 +13,6 @@ public class PatientProfile : Profile
                 .ForMember(dest => dest.Diagnosis, opt => opt.Ignore())
                 .ForMember(dest => dest.DoctorConclusions, opt => opt.Ignore())
                 .ForMember(dest => dest.ResponseDateDoctor, opt => opt.Ignore());
-
         CreateMap<PatientForm, PatientFormDto>();
         CreateMap<PatientForm, PatientDto>();
     }

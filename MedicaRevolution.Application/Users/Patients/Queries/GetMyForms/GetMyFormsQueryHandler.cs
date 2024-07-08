@@ -1,6 +1,5 @@
 ﻿using AutoMapper;
 using MediatR;
-using MedicaRevolution.Application.Users.Doctors.Queries;
 using MedicaRevolution.Application.Users.Dtos;
 using MedicaRevolution.Domain.Interfaces;
 using MedicaRevolution.Domain.Repositories;
@@ -8,12 +7,8 @@ using Microsoft.AspNetCore.Http;
 using System.Security.Claims;
 
 namespace MedicaRevolution.Application.Users.Patients.Queries.GetMyForms;
-
-public class GetMyFormsQueryHandler(IPatientRepository patientFormRepository, 
-    IMapper mapper, 
-    IHttpContextAccessor httpContextAccessor,
-    IBlobStorageService blobStorageService
-    ) : IRequestHandler<GetMyFormsQuery, List<PatientFormDto>>
+public class GetMyFormsQueryHandler(IPatientRepository patientFormRepository, IMapper mapper, IHttpContextAccessor httpContextAccessor,
+    IBlobStorageService blobStorageService) : IRequestHandler<GetMyFormsQuery, List<PatientFormDto>>
 {
     public async Task<List<PatientFormDto>> Handle(GetMyFormsQuery request, CancellationToken cancellationToken)
     {
